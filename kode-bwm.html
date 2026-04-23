@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KODE.BWM | ICT & Design</title>
+
+<style>
+html{scroll-behavior:smooth;}
+
+body{
+  margin:0;
+  background:#0F172A;
+  font-family:Arial, Helvetica, sans-serif;
+  color:white;
+}
+
+/* HEADER */
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 40px;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.logo img{
+  width:60px;
+  border-radius:50%;
+}
+
+.nav{
+  display:flex;
+  gap:30px;
+}
+
+.nav a{
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+  transition:.3s;
+}
+
+.nav a:hover{
+  color:#38bdf8;
+}
+
+/* HOME */
+.home{
+  text-align:center;
+  padding:100px 20px;
+}
+
+.start-button{
+  background:purple;
+  padding:15px 40px;
+  border:none;
+  border-radius:40px;
+  color:white;
+  font-size:20px;
+  cursor:pointer;
+}
+
+/* SERVICES */
+.service-blocks{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+  padding:40px;
+}
+
+.box{
+  background:#1e293b;
+  padding:20px;
+  border-radius:10px;
+  transition:.3s;
+}
+
+.box:hover{
+  transform:translateY(-10px);
+}
+
+/* PRICING */
+.pricing{
+  padding:60px 20px;
+  text-align:center;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+  justify-items:center;
+}
+
+.card{
+  background:#1e293b;
+  padding:25px;
+  border-radius:15px;
+  width:280px;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:scale(1.05);
+}
+
+.price{
+  font-size:28px;
+  color:#38bdf8;
+}
+
+ul{
+  list-style:none;
+  padding:0;
+}
+
+button{
+  margin-top:10px;
+  padding:10px 20px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  background:#38bdf8;
+}
+button:hover{
+  background:#0ea5e9;
+  cursor: pointer;
+}
+
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+  padding:20px;
+}
+
+.gallery-card{
+  background:#1e293b;
+  padding:15px;
+  border-radius:10px;
+  text-align:center;
+  overflow:hidden;
+}
+
+/* SLIDER */
+.slider{
+  height:200px;
+  position:relative;
+}
+
+.slider img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  position:absolute;
+  left:100%;
+  transition:1s;
+  opacity:0;
+}
+
+/* ACTIVE IMAGE */
+.slider img.active{
+  left:0;
+  opacity:1;
+}
+
+/* PAUSE ON HOVER */
+.slider:hover img{
+  animation-play-state: paused;
+}
+
+/* LIGHTBOX */
+.lightbox{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.9);
+  display:none;
+  justify-content:center;
+  align-items:center;
+}
+
+.lightbox img{
+  max-width:90%;
+  max-height:90%;
+}
+
+#close{
+  position:absolute;
+  top:20px;
+  right:30px;
+  color:white;
+  font-size:40px;
+  cursor:pointer;
+}
+
+
+.form-popup{
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.7);
+  justify-content:center;
+  align-items:center;
+}
+
+.form-box{
+  background:#1e293b;
+  padding:20px;
+  border-radius:10px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  width:300px;
+}
+
+.form-box input, .form-box textarea{
+  padding:10px;
+  border:none;
+  border-radius:5px;
+}
+
+.form-box button{
+  padding:10px;
+  border:none;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+.whatsapp-float{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:white;
+  font-size:30px;
+  padding:15px;
+  border-radius:50%;
+  text-decoration:none;
+  box-shadow:0 5px 15px rgba(0,0,0,0.3);
+  z-index:1000;
+  transition:0.3s;
+}
+
+.whatsapp-float:hover{
+  transform:scale(1.1);
+}
+
+.testimonials{
+  padding:60px 20px;
+  text-align:center;
+}
+
+.testimonial-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+.testimonial{
+  background:#1e293b;
+  padding:20px;
+  border-radius:10px;
+}
+
+
+.portfolio{
+  padding:60px 20px;
+  text-align:center;
+}
+
+.portfolio-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
+}
+
+.portfolio-grid img{
+  width:100%;
+  border-radius:10px;
+  transition:0.3s;
+}
+
+.portfolio-grid img:hover{
+  transform:scale(1.05);
+}
+
+.why-us{
+  padding:60px 20px;
+  text-align:center;
+}
+
+.why-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="logo">
+    <img src="logo-image.png">
+    <div>
+      <h2>KODE.BWM</h2>
+      <small>Web & Graphic Solution</small>
+    </div>
+  </div>
+
+  <div class="nav">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact">Contact</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#portfolio">Portfolio</a>
+
+  </div>
+</div>
+
+<!-- HOME -->
+<section id="home" class="home">
+  <h1>Your Trusted ICT & Design Partner</h1>
+  <p>Web Development • Graphic Design • ICT Support</p>
+  <button class="start-button" onclick="openForm('Home Package')">Get Started</button>
+</section>
+
+<!-- ABOUT -->
+
+<section id="about" style="padding:40px; text-align:center;">
+  <h2>About Us</h2>
+  <p>KODE.BWM is a leading ICT and design company dedicated to providing top-notch web development, graphic design, and ICT support services. With a team of skilled professionals, we strive to deliver innovative solutions that help businesses and schools thrive in the digital age.</p>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <h2 style="text-align:center;">Our Services</h2>
+  <div class="service-blocks">
+
+    <div class="box">
+      <h3>Web Development</h3>
+      <p>Modern responsive websites for businesses and schools.</p>
+    </div>
+
+    <div class="box">
+      <h3>ICT Support</h3>
+      <p>System installation, repair and troubleshooting.</p>
+    </div>
+
+    <div class="box">
+      <h3>Graphic Design</h3>
+      <p>Logos, posters and branding designs.</p>
+    </div>
+
+  </div>
+</section>
+  
+<!-- GALLERY -->
+<section id="gallery-section">
+  <h2 style="text-align:center;">Our Work Gallery</h2>
+
+  <div class="gallery-grid">
+
+    <!-- CARD -->
+    <div class="gallery-card">
+      <h3>Web Design</h3>
+      <div class="slider">
+        <img src="kode-image1.png">
+        <img src="kode-image2.png">
+        <img src="kode-image3.png">
+        <img src="kode-image4.png">
+        <img src="kode-image5.png">
+      </div>
+    </div>
+
+    <div class="gallery-card">
+      <h3>Graphic Design</h3>
+      <div class="slider">
+        <img src="kode-image6.png">
+        <img src="kode-image7.png">
+        <img src="kode-image8.png">
+        <img src="kode-image9.png">
+        <img src="kode-image10.png">
+      </div>
+    </div>
+
+    <div class="gallery-card">
+      <h3>ICT Support</h3>
+      <div class="slider">
+        <img src="kode-image11.png">
+        <img src="kode-image12.png">
+        <img src="kode-image13.png">
+        <img src="kode-image14.png">
+        <img src="kode-image15.png">
+      </div>
+    </div>
+
+    <div class="gallery-card">
+      <h3>Branding</h3>
+      <div class="slider">
+        <img src="kode-image15.png">
+        <img src="kode-image16.png">
+        <img src="kode-image17.png">
+        <img src="kode-image18.png">
+        <img src="kode-image19.png">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <span id="close">&times;</span>
+  <img id="lightbox-img">
+</div>
+
+<!-- PRICING -->
+<section id="pricing" class="pricing">
+  <h2>Our Pricing</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>Basic</h3>
+      <p class="price">$<span class="counter" data-target="50">0</span>+</p>
+      <ul>
+        <li>1–3 pages</li>
+        <li>Simple design</li>
+        <li>Mobile responsive</li>
+      </ul>
+      <button onclick="openForm('Basic Package')">Get Quote</button>
+    </div>
+
+    <div class="card">
+      <h3>Standard</h3>
+      <p class="price">$<span class="counter" data-target="100">0</span>+</p>
+      <ul>
+        <li>4–7 pages</li>
+        <li>Modern design</li>
+        <li>Contact form</li>
+      </ul>
+      <button onclick="openForm('Standard Package')">Get Quote</button>
+    </div>
+
+    <div class="card">
+      <h3>Premium</h3>
+      <p class="price">$<span class="counter" data-target="200">0</span>+</p>
+      <ul>
+        <li>8+ pages</li>
+        <li>Custom design</li>
+        <li>SEO + Speed</li>
+      </ul>
+      <button onclick="openForm('Premium Package')">Get Quote</button>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- SERVICE REQUEST FORM -->
+<div class="form-popup" id="formPopup">
+  <div class="form-box">
+    <h3>Request Service</h3>
+
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="text" id="phone" placeholder="Phone Number" required>
+    <input type="text" id="service" readonly>
+
+    <textarea id="message" placeholder="Additional details..."></textarea>
+
+    <button onclick="sendWhatsApp()">Send to WhatsApp</button>
+    <button onclick="closeForm()">Cancel</button>
+  </div>
+</div>
+
+<!-- WhatsApp button -->
+ <a href="https://wa.me/256792096974" class="whatsapp-float" target="_blank">
+  💬
+</a>
+
+
+<!-- testimonials -->
+ <section  id="testimonials">
+  <h2>What Clients Say</h2>
+
+  <div class="testimonial-grid">
+
+    <div class="testimonial">
+      <p>"KODE.BWM built my business website perfectly. Highly recommend!"</p>
+      <h4>- John, Kampala</h4>
+    </div>
+
+    <div class="testimonial">
+      <p>"Very fast and professional service. My posters looked amazing."</p>
+      <h4>- Sarah</h4>
+    </div>
+
+    <div class="testimonial">
+      <p>"Reliable ICT support. Fixed my laptop in one day."</p>
+      <h4>- David</h4>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- PORTFOLIO -->  
+<section id = "portfolio">
+  <h2>Our Work</h2>
+
+  <div class="portfolio-grid">
+
+    <img src="kode-image1.png">
+    <img src="kode-image2.png">
+    <img src="kode-image3.png">
+    <img src="kode-image4.png">
+
+  </div>
+</section>
+
+<!-- why choose us -->
+ <section class="why-us">
+  <h2>Why Choose Us</h2>
+
+  <div class="why-grid">
+
+    <div>
+      <h3>⚡ Fast Delivery</h3>
+      <p>We deliver projects on time.</p>
+    </div>
+
+    <div>
+      <h3>🎯 Quality Work</h3>
+      <p>Clean, modern and professional designs.</p>
+    </div>
+
+    <div>
+      <h3>🤝 Trusted Service</h3>
+      <p>We focus on client satisfaction.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact" style="padding:40px; text-align:center;">
+  <h2>Contact Us</h2>
+  <p>Email:kode.bwm1617@gmail.com</p>
+  <p>or</p>
+  <p><a href="mailto:info@kodebwm.com">info@kodebwm.com</a></p>
+  <p>Phone: +256 792 096974 / +256 704 12557
+  </p>
+<p>Address: Plot 17, Block 16, Masajja, Wakiso, Uganda</p>
+
+<p>Follow us on social media:</p>
+<p>
+  <a href="https://www.facebook.com/kodebwm" style="color:#38bdf8; text-decoration:none; margin:0 10px;">Facebook</a> |
+  <a href="https://www.twitter.com/kodebwm" style="color:#38bdf8; text-decoration:none; margin:0 10px;">Twitter</a> |
+  <a href="https://www.instagram.com/kodebwm" style="color:#38bdf8; text-decoration:none; margin:0 10px;">Instagram</a>
+  <p> Copyright © 2026 KODE.BWM. All rights reserved.</p>
+</section>
+
+
+
+
+<!-- SCRIPTS -->
+<script>
+const counters = document.querySelectorAll(".counter");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      const el = entry.target;
+      const target = +el.getAttribute("data-target");
+
+      let count = 0;
+      const speed = 20;
+
+      const update = () => {
+        if(count < target){
+          count++;
+          el.innerText = count;
+          setTimeout(update, speed);
+        } else {
+          el.innerText = target;
+        }
+      };
+
+      update();
+      observer.unobserve(el);
+    }
+  });
+});
+
+counters.forEach(counter => observer.observe(counter));           
+
+/* SLIDER LOGIC */
+document.querySelectorAll(".slider").forEach(slider => {
+  let images = slider.querySelectorAll("img");
+  let index = 0;
+
+  images[0].classList.add("active");
+
+  setInterval(() => {
+    images[index].classList.remove("active");
+    index = (index + 1) % images.length;
+    images[index].classList.add("active");
+  }, 3000);
+});
+
+/* LIGHTBOX */
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+
+document.querySelectorAll(".slider img").forEach(img => {
+  img.addEventListener("click", () => {
+    lightbox.style.display = "flex";
+    lightboxImg.src = img.src;
+  });
+});
+
+document.getElementById("close").onclick = () => {
+  lightbox.style.display = "none";
+};
+
+
+// SERVICE REQUEST FORM LOGIC   
+
+let selectedService = "";
+
+function openForm(service){
+  document.getElementById("formPopup").style.display = "flex";
+  document.getElementById("service").value = service;
+  selectedService = service;
+}
+
+function closeForm(){
+  document.getElementById("formPopup").style.display = "none";
+}
+
+function sendWhatsApp(){
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let message = document.getElementById("message").value;
+
+  let whatsappNumber = "2567XXXXXXXX"; // PUT YOUR NUMBER
+
+  let text = `Hello, I want a service:
+Name: ${name}
+Phone: ${phone}
+Service: ${selectedService}
+Details: ${message}`;
+
+  let url = `https://wa.me/${+256792096974}?text=${encodeURIComponent(text)}`;
+
+  window.open(url, "_blank");
+}
+
+</script>
+
+
+
+</body>
+</html>
