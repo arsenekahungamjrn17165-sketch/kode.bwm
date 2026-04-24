@@ -41,10 +41,11 @@ nav{
     align-items:center;
     gap: 40px;
     padding:20px 0;
-    display:flex;
     width: auto;
   }
-
+.nav{
+  display:none;
+}
   .nav.active{
     display:flex;
   }
@@ -739,6 +740,13 @@ menuToggle.addEventListener("click", () => {
   nav.classList.toggle("active");
 });
 
+
+
+document.querySelectorAll(".nav a").forEach(link => {
+  link.addEventListener("click", () => {
+    nav.classList.remove("active");
+  });
+});
     </script>
 
 
