@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KODE.BWM | ICT & Design</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
     html{scroll-behavior:smooth;}
@@ -11,75 +19,168 @@
     body{
       margin:0;
       background:#0F172A;
-      font-family:Arial, Helvetica, sans-serif;
+      font-family:'Poppins', Arial, sans-serif;
       color:white;
+      font-weight: 400;
     }
-/* HAMBURGER (hidden on PC) */
-.menu-toggle{
-  display:none;
-  font-size:28px;
-  cursor:pointer;
+
+
+    h1, h2, h3{
+      font-weight: 600;
+    }
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #0F172A;
 }
 
-/* MOBILE VIEW */
-@media (max-width: 768px){
-nav{
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.logo h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.logo small {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* NAV DESKTOP */
+.nav {
+  display: flex;
+  gap: 25px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: 0.3s;
+  position: relative;
+}
+
+
+.nav a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ICON STYLE */
+.nav a i {
+  font-size: 14px;
+  color: #38bdf8;
+  transition: 0.3s;
+}
+
+/* HOVER EFFECT */
+.nav a:hover i {
+  transform: scale(1.2);
+}
+
+
+
+/* PROFESSIONAL HOVER */
+.nav a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: #38bdf8;
+  bottom: -5px;
+  left: 0;
+  transition: 0.3s;
+}
+
+.nav a:hover {
+  color: #38bdf8;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* HAMBURGER */
+.menu-toggle {
+  display: none;
+  width: 28px;
+  height: 20px;
   flex-direction: column;
-  gap: 20px;
+  justify-content: space-between;
+  cursor: pointer;
 }
-  .menu-toggle{
-    display:block;
+
+.menu-toggle span {
+  height: 3px;
+  background: white;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+/* ANIMATION */
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+  .menu-toggle {
+    display: flex;
   }
 
-  .nav{
-    position:absolute;
-    top:80px;
-    right:0;
-    background:#0F172A;
-    width:100%;
-    flex-direction:column;
-    align-items:center;
-    gap: 40px;
-    padding:20px 0;
-    width: auto;
+  .nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+
+    transition: 0.4s ease;
   }
-.nav{
-  display:none;
-}
-  .nav.active{
-    display:flex;
+
+  .nav.active {
+    right: 0;
+  }
+
+  .nav a {
+    font-size: 20px;
   }
 }
-    /* HEADER */
-    .header{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:20px 40px;
-    }
-
-    .logo{
-      display:flex;
-      align-items:center;
-      gap:15px;
-    }
-
-    .logo img{
-      width:60px;
-      border-radius:50%;
-    }
-
-
-  .nav a{
-      color:white;
-      text-decoration:none;
-      font-weight:600;
-      transition:.3s;
-    }
-
-    .nav a:hover{
-      color:#38bdf8;
-    }
 
     /* HOME */
     .home{
@@ -207,32 +308,40 @@ nav{
     }
 
     /* LIGHTBOX */
-    .lightbox{
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      background:rgba(0,0,0,0.9);
-      display:none;
-      justify-content:center;
-      align-items:center;
-    }
+    .lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 
-    .lightbox img{
-      max-width:90%;
-      max-height:90%;
-    }
+  background: rgba(0, 0, 0, 0.9);
 
-    #close{
-      position:absolute;
-      top:20px;
-      right:30px;
-      color:white;
-      font-size:40px;
-      cursor:pointer;
-    }
+  display: none;
+  justify-content: center;
+  align-items: center;
 
+  z-index: 10000;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+/* CLOSE BUTTON */
+#close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+}
+
+
+/* SERVICE REQUEST FORM */
 
     .form-popup{
       display:none;
@@ -269,24 +378,91 @@ nav{
       cursor:pointer;
     }
 
-    .whatsapp-float{
-      position:fixed;
-      bottom:20px;
-      right:20px;
-      background:#25D366;
-      color:white;
-      font-size:30px;
-      padding:15px;
-      border-radius:50%;
-      text-decoration:none;
-      box-shadow:0 5px 15px rgba(0,0,0,0.3);
-      z-index:1000;
-      transition:0.3s;
-    }
+  .whatsapp-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
 
-    .whatsapp-float:hover{
-      transform:scale(1.1);
-    }
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+
+  background: #25D366;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 28px;
+  text-decoration: none;
+
+  z-index: 9999;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+
+/* ICON */
+.whatsapp-float i {
+  z-index: 2;
+}
+
+/* RING ANIMATION */
+.whatsapp-float::before,
+.whatsapp-float::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(37, 211, 102, 0.4);
+  z-index: 1;
+  animation: pulse 2s infinite;
+}
+
+/* second ring delay */
+.whatsapp-float::after {
+  animation-delay: 1s;
+}
+
+/* KEYFRAMES */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* HOVER EFFECT */
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+    
+
+.whatsapp-float::after {
+  content: "Contact KODE.BWM";
+  position: absolute;
+  right: 70px;
+  background: #1e293b;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  opacity: 0.7;
+  transition: 0.3s;
+}
+
+.whatsapp-float:hover::after {
+  opacity: 1;
+}
+
+
+
 
     .testimonials{
       padding:60px 20px;
@@ -337,35 +513,167 @@ nav{
       grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
       gap:20px;
     }
+
+
+.contact-section {
+  padding: 60px 20px;
+  background: #020617;
+}
+
+.contact-section h2 {
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+/* LEFT SIDE */
+.contact-info {
+  max-width: 400px;
+}
+
+.contact-info p {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.contact-info a {
+  color: #38bdf8;
+  text-decoration: none;
+}
+
+/* RIGHT SIDE */
+.contact-socials {
+  min-width: 200px;
+}
+
+.contact-socials h3 {
+  margin-bottom: 15px;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  text-decoration: none;
+  color: white;
+
+  transition: 0.3s;
+}
+
+/* ICON STYLE */
+.social-links i {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #1e293b;
+  border-radius: 50%;
+}
+
+/* HOVER */
+.social-links a:hover {
+  color: #38bdf8;
+  transform: translateX(5px);
+}
+
+/* COPYRIGHT */
+.copyright {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+  }
+
+  .contact-section h2 {
+    text-align: center;
+  }
+}
+
+
+
+
+
+
+
     </style>
     </head>
 
     <body>
 
-      <!-- HEADER -->
-<div class="header">
+
+
+
+
+
+
+
+<!-- HEADER -->
+<header class="header">
+
+  <!-- LOGO -->
   <div class="logo">
-    <img src="logo-image.png">
+    <img src="logo-image.png" alt="KODE Logo">
     <div>
       <h2>KODE.BWM</h2>
       <small>Web & Graphic Solution</small>
     </div>
   </div>
 
-  <!-- HAMBURGER -->
-  <div class="menu-toggle" id="menu-toggle">☰</div>
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+<a href="#home"><i class="fas fa-home"></i> Home</a>
+<a href="#about"><i class="fas fa-user"></i> About</a>
+<a href="#services"><i class="fas fa-laptop-code"></i> Services</a>
+<a href="#gallery-section"><i class="fas fa-image"></i> Gallery</a>
+<a href="#pricing"><i class="fas fa-coins"></i> Pricing</a>
+<a href="#contact"><i class="fas fa-phone"></i> Contact</a>
+<a href="#testimonials"><i class="fas fa-star"></i> Testimonials</a>
+<a href="#portfolio"><i class="fas fa-folder"></i> Portfolio</a>
+  </nav>
 
-  <div class="nav" id="nav">
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#gallery-section">Gallery</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#contact">Contact</a>
-    <a href="#testimonials">Testimonials</a>
-    <a href="#portfolio">Portfolio</a>
+  <!-- HAMBURGER -->
+  <div class="menu-toggle" id="menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
-</div>
+
+</header>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- HOME -->
     <section id="home" class="home">
@@ -525,9 +833,9 @@ nav{
     </div>
 
     <!-- WhatsApp button -->
-    <a href="https://wa.me/256792096974" class="whatsapp-float" target="_blank">
-      💬
-    </a>
+<a href="https://wa.me/256792096974" class="whatsapp-float" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
 
 
     <!-- testimonials -->
@@ -616,28 +924,63 @@ nav{
     </section>
 
 
-    <!-- CONTACT -->
-    <section id="contact" style="padding:40px; text-align:center;">
-      <h2>Contact Us</h2>
-      <p>Email:kode.bwm1617@gmail.com</p>
-      <p>or</p>
-      <p><a href="mailto:info@kodebwm.com">info@kodebwm.com</a></p>
-      <p>Phone: +256 792 096974 / +256 704 12557
+
+
+<!-- CONTACT --> 
+
+<section id="contact" class="contact-section">
+
+  <h2>Contact Us</h2>
+
+  <div class="contact-container">
+
+    <!-- LEFT SIDE -->
+    <div class="contact-info">
+
+      <p><strong>Email:</strong><br>
+        <a href="mailto:kode.bwm1617@gmail.com">kode.bwm1617@gmail.com</a><br>
+        <a href="mailto:info@kodebwm.com">info@kodebwm.com</a>
       </p>
-    <p>Address: Plot 17, Block 16, Masajja, Wakiso, Uganda</p>
 
-    <p>Follow us on social media:</p>
-    <p>
-      <a href="https://www.facebook.com/kodebwm" style="color:#38bdf8; text-decoration:none; margin:0 10px;">Facebook</a> |
-      <a href="https://www.twitter.com/kodebwm" style="color:#38bdf8; text-decoration:none; margin:0 10px;">Twitter</a> |
-      <a href="https://www.instagram.com/kodebwm" style="color:#38bdf8; text-decoration:none; margin:0 10px;">Instagram</a>
-      <p> Copyright © 2026 KODE.BWM. All rights reserved.</p>
-    </section>
+      <p><strong>Phone:</strong><br>
+        +256 792 096974<br>
+        +256 704 12557
+      </p>
+
+      <p><strong>Address:</strong><br>
+        Plot 17, Block 16<br>
+        Masajja, Wakiso, Uganda
+      </p>
+
+    </div>
+
+    <!-- RIGHT SIDE (SOCIALS) -->
+    <div class="contact-socials">
+
+      <h3>Follow Us</h3>
+
+      <div class="social-links">
+
+        <a href="https://www.facebook.com/kodebwm"><i class="fab fa-facebook-f"></i> Facebook</a>
+        <a href="https://www.instagram.com/kodebwm"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="https://www.twitter.com/kodebwm"><i class="fab fa-twitter"></i> Twitter</a>
+        <a href="https://www.linkedin.com/company/kodebwm"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <p class="copyright">
+    © 2026 KODE.BWM. All rights reserved.
+  </p>
+
+</section>
 
 
 
-
-    <!-- SCRIPTS -->
+  
     <script>
     const counters = document.querySelectorAll(".counter");
 
@@ -668,6 +1011,11 @@ nav{
 
     counters.forEach(counter => observer.observe(counter));           
 
+  
+  
+  
+  
+  
     /* SLIDER LOGIC */
     document.querySelectorAll(".slider").forEach(slider => {
       let images = slider.querySelectorAll("img");
@@ -682,22 +1030,50 @@ nav{
       }, 3000);
     });
 
+  
+  
+  
+  
+  
     /* LIGHTBOX */
     const lightbox = document.getElementById("lightbox");
-    const lightboxImg = document.getElementById("lightbox-img");
+const lightboxImg = document.getElementById("lightbox-img");
+const closeBtn = document.getElementById("close");
 
-    document.querySelectorAll(".slider img").forEach(img => {
-      img.addEventListener("click", () => {
-        lightbox.style.display = "flex";
-        lightboxImg.src = img.src;
-      });
-    });
+// OPEN
+document.querySelectorAll(".slider img").forEach(img => {
+  img.addEventListener("click", () => {
+    lightbox.style.display = "flex";
+    lightboxImg.src = img.src;
+    document.body.style.overflow = "hidden";
+  });
+});
 
-    document.getElementById("close").onclick = () => {
-      lightbox.style.display = "none";
-    };
+// CLOSE BUTTON
+closeBtn.addEventListener("click", () => {
+  lightbox.style.display = "none";
+  document.body.style.overflow = "auto";
+});
 
+// CLOSE WHEN CLICKING OUTSIDE IMAGE
+lightbox.addEventListener("click", (e) => {
+  if (e.target === lightbox) {
+    lightbox.style.display = "none";
+    document.body.style.overflow = "auto";
+  }
+});
 
+// CLOSE WITH ESC KEY
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    lightbox.style.display = "none";
+    document.body.style.overflow = "auto";
+  }
+});
+    
+    
+    
+    
     // SERVICE REQUEST FORM LOGIC   
 
     let selectedService = "";
@@ -712,6 +1088,12 @@ nav{
       document.getElementById("formPopup").style.display = "none";
     }
 
+
+
+
+
+
+    /* WHATSAPP LOGIC  float */
     function sendWhatsApp(){
       let name = document.getElementById("name").value;
       let phone = document.getElementById("phone").value;
@@ -732,21 +1114,44 @@ nav{
 
 
 
+  
+  
+  
+  
+  
+  
+  
+    /* MOBILE MENU LOGIC */
+
 
 const menuToggle = document.getElementById("menu-toggle");
 const nav = document.getElementById("nav");
 
 menuToggle.addEventListener("click", () => {
+  menuToggle.classList.toggle("active");
   nav.classList.toggle("active");
+
+  document.body.style.overflow =
+    nav.classList.contains("active") ? "hidden" : "auto";
 });
 
-
-
+// close when link clicked (mobile)
 document.querySelectorAll(".nav a").forEach(link => {
   link.addEventListener("click", () => {
     nav.classList.remove("active");
+    menuToggle.classList.remove("active");
+    document.body.style.overflow = "auto";
   });
 });
+
+
+
+
+
+
+
+
+
     </script>
 
 
